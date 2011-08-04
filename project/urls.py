@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from ayudatec1.views import ExpertsListView, ProfileView, ArticlesListView, ArticleView, CategoryView
+from ayudatec1.views import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,4 +22,6 @@ urlpatterns = patterns('',
     url(r'^articles/$', ArticlesListView.as_view()),
     url(r'^articles/(?P<category>[\w-]+)/$', CategoryView.as_view(), name='CV'),
     url(r'^articles/(?P<category>[\w-]+)/(?P<article_slug>[\w-]+)/$', ArticleView.as_view()),
+
+    url(r'^contact/$', ContactView.as_view()),
 )

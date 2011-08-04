@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 
 class UserProfile(models.Model):
@@ -28,3 +29,9 @@ class Article(models.Model):
 
     def __unicode__(self):
         return ' - '.join([str(self.user), self.title, str(self.publish_date)])
+
+class ContactForm(ModelForm):
+    subject = forms.CharField(max_length=64)
+    message = forms.CharField()
+    sender = forms.EmailField()
+    cc_myself = forms.BooleanField(required=False)

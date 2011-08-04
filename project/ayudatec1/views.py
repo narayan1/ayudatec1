@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
-from ayudatec1.models import UserProfile, Article, Category
-from django.views.generic import TemplateView, DetailView, ListView
+from ayudatec1.models import *
+from django.views.generic import TemplateView, DetailView, ListView, FormView
 
 # def expert_list(request):
 #
@@ -55,3 +55,23 @@ class ArticleView(DetailView):
     def get_object(self):
         a = get_object_or_404(Article, slug=self.kwargs['article_slug'])
         return a
+
+#class ContactView(DetailView):
+#
+#    template_name = 'contact.html'
+#
+#    def contact(request):
+#        if request.method == 'POST':
+#            form = ContactForm(request.POST)
+#            if form.is_valid():
+#                return HttpResponseRedirect('/articles/')
+#        else:
+#            form = ContactForm()
+#
+#        return render_to_response('contact.html', {'form': form,})
+
+class ContactView(FormView):
+
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = '/articles'
