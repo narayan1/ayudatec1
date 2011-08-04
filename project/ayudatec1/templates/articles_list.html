@@ -1,0 +1,11 @@
+
+
+<h2>List of All Articles Test</h2>
+
+<div>
+    <ul>
+        {% for category in categories_l %}
+            <li><a href="{% url CV category=category.slug %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+<h2>{{ cat.name }}</h2>
+
+<div>
+    <ul>
+        {% for article in arts %}
+            <li><a href="{{ article.slug }}">{{ article.title }}</a> by {{ article.user }} on {{ article.publish_date }}</li>
+        {% endfor %}
+    </ul>
+</div>

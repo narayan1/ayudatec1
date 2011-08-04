@@ -1,4 +1,5 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import *
+from ayudatec1.views import ExpertsListView, ProfileView, ArticlesListView, ArticleView, CategoryView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,10 +16,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^experts/$', 'project.ayudatec1.views.expert_list'),
-    url(r'^experts/(?P<username>\w+)/$', 'project.ayudatec1.views.profile'),
+    url(r'^experts/$', ExpertsListView.as_view()),
+    url(r'^experts/(?P<username>[\w-]+)/$', ProfileView.as_view(template_name='profile.html')),
 
-    # url(r'^articles/$', 'project.ayudatec1.views.articles_list'),
-    # url(r'^articles/(?P<category>\w+)/$', 'project.ayudatec1.views.category'),
-    # url(r'^articles/(?P<category>\w+)/(?P<article_slug>\w+)/$', 'project.ayudatec1.views.article'),
+    url(r'^articles/$', ArticlesListView.as_view()),
+    url(r'^articles/(?P<category>[\w-]+)/$', CategoryView.as_view(), name='CV'),
+    url(r'^articles/(?P<category>[\w-]+)/(?P<article_slug>[\w-]+)/$', ArticleView.as_view()),
 )
