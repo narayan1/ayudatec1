@@ -1,0 +1,19 @@
+<form action="/userinterface/myprofile/" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.picture.errors }}
+        <label for="id_picture">Picture:</label>
+        {{ form.picture }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.bio.errors }}
+        <label for="id_bio">Bio:</label>
+        {{ form.bio }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.publish_email.errors }}
+        <label for="id_publish_email">Publish Email:</label>
+        {{ form.publish_email }}
+    </div>
+    <p><input type="submit" value="Save changes" /></p>
+</form>

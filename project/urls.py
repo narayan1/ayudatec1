@@ -24,4 +24,10 @@ urlpatterns = patterns('',
     url(r'^articles/(?P<category>[\w-]+)/(?P<article_slug>[\w-]+)/$', ArticleView.as_view()),
 
     url(r'^contact/$', ContactView.as_view()),
+
+    url(r'^userinterface/$', UserInterface.as_view()),
+    url(r'^accounts/login/$', LoginView.as_view(), name='login'),
+    url(r'^accounts/logout/$', LogoutView.as_view(), name='logout'),
+
+    url(r'^userinterface/myprofile/$', EditProfileView.as_view(), name='edit_profile'),
 )

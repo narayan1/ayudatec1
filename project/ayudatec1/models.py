@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 from django.forms import ModelForm
 
 
@@ -30,8 +31,23 @@ class Article(models.Model):
     def __unicode__(self):
         return ' - '.join([str(self.user), self.title, str(self.publish_date)])
 
+class Contact(models.Model):
+    sender = models.EmailField()
+    subject = models.CharField(max_length=64)
+    message = models.TextField()
+    cc_myself = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return ' - '.join([self.sender, self.subject])
+
 class ContactForm(ModelForm):
-    subject = forms.CharField(max_length=64)
-    message = forms.CharField()
-    sender = forms.EmailField()
-    cc_myself = forms.BooleanField(required=False)
+    class Meta:
+        model = Contact
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=64)
+    password = forms.CharField(max_length=64, widget=forms.PasswordInput)
+
+class EditProfileForm(ModelForm):
+    class Meta:
+        model = UserProfile

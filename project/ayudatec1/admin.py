@@ -10,3 +10,4 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(UserProfile)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Contact)
